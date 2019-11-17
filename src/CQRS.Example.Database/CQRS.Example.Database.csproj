@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CQRS.Transactions" Version="1.0.0" />
+    <PackageReference Include="FluentMigrator" Version="3.2.1" />
+    <PackageReference Include="FluentMigrator.Runner" Version="3.2.1" />
+    <PackageReference Include="FluentMigrator.Runner.SQLite" Version="3.2.1" />
+    <PackageReference Include="LightInject" Version="6.2.0" />
+    <PackageReference Include="ResourceReader" Version="0.0.1" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CQRS.Example.Shared\CQRS.Example.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="**/*.sql" />
+  </ItemGroup>
+</Project>

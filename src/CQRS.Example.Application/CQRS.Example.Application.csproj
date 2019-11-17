@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CQRS.Example.Shared\CQRS.Example.Shared.csproj" />
+    <ProjectReference Include="..\CQRS.Example.Database\CQRS.Example.Database.csproj" />
+    <ProjectReference Include="..\CQRS.Example.Server\CQRS.Example.Server.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LightInject.Microsoft.Hosting" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+
+  </ItemGroup>
+
+</Project>
