@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using CQRS.Command.Abstractions;
 using CQRS.Example.Server.Customers;

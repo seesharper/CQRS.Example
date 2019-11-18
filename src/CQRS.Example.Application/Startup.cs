@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using CQRS.Example.Application.Configuration;
 using CQRS.Example.Application.Swagger;
 using CQRS.Example.Database;
@@ -31,6 +32,8 @@ namespace CQRS.Example.Application
             {
                 options.Filters.Add<GlobalExceptionFilter>();
             });
+
+            // Suppress model validation since we do this as part of the decorator chain.
             services.Configure<ApiBehaviorOptions>(o => o.SuppressModelStateInvalidFilter = true);
         }
 
@@ -42,6 +45,8 @@ namespace CQRS.Example.Application
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDatabaseMigrator databaseMigrator)
         {
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+
             databaseMigrator.Migrate();
 
             if (env.IsDevelopment())

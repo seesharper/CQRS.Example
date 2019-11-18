@@ -1,12 +1,10 @@
-using System.Net.Http;
-using CQRS.Example.Shared.Http;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using AutoFixture;
+using CQRS.Example.Application.Tests.Customizations;
+using CQRS.Example.Server.Customers;
 using LightInject;
 using Xunit;
-using AutoFixture;
-using System.Threading.Tasks;
-using CQRS.Example.Server.Customers;
-using CQRS.Example.Application.Tests.Customizations;
-using System.ComponentModel.DataAnnotations;
 
 namespace CQRS.Example.Application.Tests
 {
@@ -20,9 +18,19 @@ namespace CQRS.Example.Application.Tests
         [Fact]
         public async Task ShouldCreateCustomer()
         {
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+            var activity = new Activity("CallToBackend").Start();
+            activity.AddBaggage("TEST", "TEST");
             var request = Fixture.Create<CreateCustomerCommand>();
+
             var response = await Client.CreateCustomer(request);
+            activity.Stop();
             response.EnsureSuccessStatusCode();
+
+            foreach (var item in response.Headers)
+            {
+                var test = item.Key;
+            }
         }
     }
 }

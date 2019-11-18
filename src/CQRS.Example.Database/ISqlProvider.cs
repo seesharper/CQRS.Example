@@ -4,6 +4,6 @@ namespace CQRS.Example.Database
     {
         string InsertCustomer { get; }
 
-        string GetCustomersByName { get; }
+        string GetCustomerById { get; }
     }
 }
